@@ -7,7 +7,11 @@
     <select id="" >
         SELECT * FROM
     </select>
-
+    <insert id="insertUser">
+        INSERT INTO USER(EMAIL,PASSWORD,ADDRESS,USERNAME,PHONENUMBER)
+        VALUES
+           (#{email},#{password},#{address},#{userName},#{phoneNumber});
+    </insert>
 
 
 

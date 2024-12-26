@@ -1,4 +1,4 @@
-package com.teamzipup.zipup.dto;
+package com.teamzipup.zipup.model;
 
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
