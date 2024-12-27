@@ -1,6 +1,6 @@
 package com.teamzipup.zipup.mapper;
 
-import com.teamzipup.zipup.model.User;
+import com.teamzipup.zipup.dto.User;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

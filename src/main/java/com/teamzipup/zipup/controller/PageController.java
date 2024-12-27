@@ -1,6 +1,6 @@
 
 package com.teamzipup.zipup.controller;
-import com.teamzipup.zipup.model.User;
+import com.teamzipup.zipup.dto.User;
 import com.teamzipup.zipup.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

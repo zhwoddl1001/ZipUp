@@ -1,7 +1,7 @@
 package com.teamzipup.zipup.service;
 
 import com.teamzipup.zipup.mapper.UserMapper;
-import com.teamzipup.zipup.model.User;
+import com.teamzipup.zipup.dto.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,4 +23,6 @@ public class UserServiceImpl implements UserService {
     public void insertUser(User user) {
         userMapper.insertUser(user);
     }
+
+
 }
