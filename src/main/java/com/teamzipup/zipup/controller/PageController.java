@@ -57,9 +57,10 @@ public class PageController {
     public String productAdd() {
         return "productAdd"; // productAdd.html로 이동
     }
-
+    // 회원가입 파트
     @PostMapping("/")
     public String index(@ModelAttribute("user") User user, Model model) {
+        user.setRole("user");
         userService.insertUser(user);
         model.addAttribute("msg", "회원가입 성공");
         return "index";

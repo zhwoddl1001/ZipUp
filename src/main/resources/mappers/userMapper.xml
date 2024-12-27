@@ -7,10 +7,10 @@
     <select id="" >
         SELECT * FROM
     </select>
-    <insert id="insertUser">
-        INSERT INTO USER(EMAIL,PASSWORD,ADDRESS,USERNAME,PHONENUMBER)
-        VALUES
-           (#{email},#{password},#{address},#{userName},#{phoneNumber});
+    <!-- 이용자 회원가입  -->
+    <insert id="insertUser" parameterType="com.teamzipup.zipup.dto.User">
+        INSERT INTO USER (ROLE, EMAIL, PASSWORD, ADDRESS, USERNAME, PHONENUMBER)
+        VALUES (#{role}, #{email}, #{password}, #{address}, #{userName}, #{phoneNumber});
     </insert>
 
 
