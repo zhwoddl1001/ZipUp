@@ -24,8 +24,9 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<Product> getProductsByCategory(String category) {
-        return productMapper.findByCategory(category);
+        return List.of();
     }
+
 
     @Override
     public long insertProduct(

@@ -5,11 +5,30 @@ import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
-@Mapper // sql 에 작성한 id를 가져와서 자바에서 사용하겠다는 설정 표기
-
+@Mapper
 public interface UserMapper {
     // 모든 유저 목록 조회
     List<User> getAllUsers();
-    //유저 저장하기
+
+    //일반 이용자 저장하기
     void insertUser(User user);
+
+    // 아이디(이메일) 중복 여부 확인 메서드
+    int existsByEmail(String email);
+
+    //판매자 저장
+    void insertSeller(User user);
+
+    // 로그인
+    User findByEmail(String email);
+
+    // 아이디 찾기
+    User findByUserNameAndPassword(String userName, String password);
+
+    // 비밀번호 찾기
+    User findByEmailAndPhoneNumber(String email, String phoneNumber);
+
+    // 아이디로 조회
+    User findById(long id);
+
 }

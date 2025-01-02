@@ -12,7 +12,7 @@
 
 <div class="mypage-container">
     <div class="mypage-h1">
-    <h1>마이페이지</h1>
+        <h1>마이페이지</h1>
     </div>
     <table class="mypage-table">
         <tr>
@@ -27,23 +27,25 @@
             <th>주소</th>
             <td th:text="${user.address}"></td>
         </tr>
-        <tr>
-            <th>이름</th>
-            <td th:text="${user.userName}"></td>
-        </tr>
+        <div th:if="${session.loginUser.role == 'user'}">
+            <tr>
+                <th>이름</th>
+                <td th:text="${user.userName}"></td>
+            </tr>
+        </div>
         <tr>
             <th>휴대폰 번호</th>
             <td th:text="${user.phoneNumber}"></td>
         </tr>
         <div th:if="${session.loginUser.role == 'seller'}">
-        <tr>
-            <th>사업자 등록 번호</th>
-            <td  th:text="${user.businessNumber}"></td>
-        </tr>
-        <tr>
-            <th>상호명</th>
-            <td th:text="${user.companyName}"></td>
-        </tr>
+            <tr>
+                <th>사업자 등록 번호</th>
+                <td  th:text="${user.businessNumber}"></td>
+            </tr>
+            <tr>
+                <th>상호명</th>
+                <td th:text="${user.companyName}"></td>
+            </tr>
         </div>
     </table>
 </div>

@@ -1,34 +1,29 @@
 package com.teamzipup.zipup.mapper;
 
-import com.teamzipup.zipup.dto.User;
+import com.teamzipup.zipup.dto.Product;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
 @Mapper
-public interface UserMapper {
-    // 모든 유저 목록 조회
-    List<User> getAllUsers();
+public interface ProductMapper {
 
-    //일반 이용자 저장하기
-    void insertUser(User user);
+    // 상품 전체 리스트
+    List<Product> findAll();
 
-    // 아이디(이메일) 중복 여부 확인 메서드
-    int existsByEmail(String email);
+    // 판매자 제품 등록
+    void insertProduct(Product product);
 
-    //판매자 저장
-    void insertSeller(User user);
+    // 상품 ID로 조회
+    Product findById(long id);
 
-    // 로그인
-    User findByEmail(String email);
+    // 상품 검색 및 정렬
+    List<Product> searchProducts(@Param("category") String category,
+                                 @Param("searchType") String searchType,
+                                 @Param("query") String query,
+                                 @Param("sortOrder") String sortOrder);
 
-    // 아이디 찾기
-    User findByUserNameAndPassword(String userName, String password);
-
-    // 비밀번호 찾기
-    User findByEmailAndPhoneNumber(String email, String phoneNumber);
-
-    // 아이디로 조회
-    User findById(long id);
-
+    // 오늘의 상품
+    List<Product> getRandomProducts(int count);
 }
