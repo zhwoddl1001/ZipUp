@@ -25,13 +25,13 @@ public class AuthController {
     @PostMapping("/signup/user")
     public String userSignup(@ModelAttribute("user") User user, Model model) {
         if (userService.isEmailTaken(user.getEmail())) {
-            model.addAttribute("error", "중복된 이메일입니다. 다른 이메일을 입력하세요.");
+
             return "userSignup"; // 회원가입 페이지로 다시 이동
         }
         user.setRole("user"); // 이용자 역할 설정
         userService.insertUser(user);
-        model.addAttribute("msg", "회원가입 성공 (이용자)");
-        return "redirect:/";
+
+        return "/login";
     }
     // 이메일 중복체크
     @GetMapping("/check-email")
@@ -48,16 +48,16 @@ public class AuthController {
         user.setRole("seller"); // 판매자 역할 설정
         userService.insertSeller(user);
         model.addAttribute("msg", "회원가입 성공 (판매자)");
-        return "redirect:/";
+        return "login";
     }
 
     @PostMapping("/login")
     public String login(
-        @RequestParam("email") String email,
-        @RequestParam("password") String password,
-        HttpSession session,
-        RedirectAttributes redirectAttributes,
-        Model model
+            @RequestParam("email") String email,
+            @RequestParam("password") String password,
+            HttpSession session,
+            RedirectAttributes redirectAttributes,
+            Model model
     ) {
         // 사용자 인증 로직
         User user = userService.findByEmail(email);
@@ -86,10 +86,10 @@ public class AuthController {
 
     @PostMapping("/find/email")
     public String findEmail(
-        @RequestParam("userName") String userName,
-        @RequestParam("password") String password,
-        Model model,
-        RedirectAttributes redirectAttributes
+            @RequestParam("userName") String userName,
+            @RequestParam("password") String password,
+            Model model,
+            RedirectAttributes redirectAttributes
     ) {
         try {
             String email = userService.findEmail(userName, password);
@@ -109,10 +109,10 @@ public class AuthController {
 
     @PostMapping("/find/password")
     public String findPassword(
-        @RequestParam("email") String email,
-        @RequestParam("phoneNumber") String phoneNumber,
-        Model model,
-        RedirectAttributes redirectAttributes
+            @RequestParam("email") String email,
+            @RequestParam("phoneNumber") String phoneNumber,
+            Model model,
+            RedirectAttributes redirectAttributes
     ) {
         try {
             String password = userService.findPassword(email, phoneNumber);
